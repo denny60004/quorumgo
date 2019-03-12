@@ -33,6 +33,7 @@ type IstanbulSender interface {
 // RaftReader provides access to raft.
 type RaftReader interface {
 	// Implement method `raft_addPeer`.
+	RaftAddPeer(enodeID string) (uint16, error)
 	// Implement method `raft_removePeer`.
 }
 

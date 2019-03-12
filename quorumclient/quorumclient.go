@@ -58,3 +58,10 @@ func (ec *Client) SendTransaction(ctx context.Context, tx *types.SendTxArgs) (co
 	err := ec.rc.CallContext(ctx, &txHash, "eth_sendTransaction", tx)
 	return txHash, err
 }
+
+// RaftAddPeer should contain enode, IP(real world), raft port
+func (ec *Client) RaftAddPeer(ctx context.Context, enodeID string) (uint16, error) {
+	var raftID uint16
+	err := ec.rc.CallContext(ctx, &raftID, "raft_addPeer", enodeID)
+	return raftID, err
+}
